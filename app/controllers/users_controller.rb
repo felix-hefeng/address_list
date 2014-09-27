@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_departments, only: [:new, :edit]
 
   # GET /users
   def index
@@ -51,8 +52,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def set_departments
+      @departments = Department.all
+    end
+
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :sex, :birthday, :phone, :mobile, :address, :position, :image)
+      params.require(:user).permit(:name, :sex, :birthday, :phone, :mobile, :address, :position, :department_id, :image)
     end
 end

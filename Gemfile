@@ -20,6 +20,8 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 
 gem 'jquery-rails'
 
+gem 'grape'
+
 group :test, :development do
   gem "rspec", "~> 2.0"
   gem "rspec-rails", "~> 2.0"

@@ -1,5 +1,8 @@
 AddressBook::Application.routes.draw do
+  resources :departments
+  get 'departments/:id/users' => 'departments#users'
   resources :users
+  mount Tongxin263::API => '/api'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

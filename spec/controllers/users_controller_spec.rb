@@ -88,8 +88,8 @@ describe UsersController do
     describe "with valid params" do
       it "updates the requested user" do
         user = User.create! valid_attributes
-        User.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => user.to_param, :user => { "name" => "MyString" }}, valid_session
+        User.any_instance.should_receive(:update).with({ "name" => "Felix", "address" => "Shanghai", "mobile" => "13811115555" })
+        put :update, {:id => user.to_param, :user => { "name" => "Felix", "address" => "Shanghai", "mobile" => "13811115555" }}, valid_session
       end
 
       it "assigns the requested user as @user" do
@@ -106,11 +106,27 @@ describe UsersController do
     end
 
     describe "with invalid params" do
-      it "assigns the user as @user" do
+      it "assigns the user with blank name" do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => user.to_param, :user => { "name" => nil, "address" => "shanghai", "mobile" => "13511115555" }}, valid_session
+        assigns(:user).should eq(user)
+      end
+
+      it "assigns the user with blank address" do
+        user = User.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        User.any_instance.stub(:save).and_return(false)
+        put :update, {:id => user.to_param, :user => { "name" => "Felix", "address" => nil, "mobile" => "13511115555" }}, valid_session
+        assigns(:user).should eq(user)
+      end
+
+      it "assigns the user with blank mobile" do
+        user = User.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        User.any_instance.stub(:save).and_return(false)
+        put :update, {:id => user.to_param, :user => { "name" => "Felix", "address" => "Shanghai", "mobile" => nil }}, valid_session
         assigns(:user).should eq(user)
       end
 

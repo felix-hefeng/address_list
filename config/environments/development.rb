@@ -33,4 +33,11 @@ AddressBook::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # assets for QiNiu
+  QINIU_ACCESS_KEY = 'O39Wat3eUnkiwHFjKd4qxjHJZWSZBkzm8ZMgI8Br'
+  QINIU_ACCESS_SECRET = 'fMOOQgKxFeEG4qDdoyn6-jMbQWnzhTKPdh0Z8UgP'
+  QINIU_BUCKET = 'dingcity-test'
+  QINIU_BUCKET_DOMAIN = 'diningcity-test.qiniudn.com'
+  
 end

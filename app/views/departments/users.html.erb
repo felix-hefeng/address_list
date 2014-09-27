@@ -1,14 +1,13 @@
 <div class="panel panel-info">
   <div class="panel-heading">
     <div class="page-header">
-      <h2>Address Book <small>Beta</small></h2>
+      <h2>Users of <%= @department.name %></h2>
     </div>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Department</th>
           <th>Position</th>
           <th>Name</th>
           <th>Sex</th>
@@ -26,7 +25,6 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.department.name rescue "" %></td>
             <td><%= user.position %></td>
             <td><%= user.name %></td>
             <td><%= user.sex %></td>

@@ -58,5 +58,10 @@ module AddressBook
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # for api
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
   end
 end
