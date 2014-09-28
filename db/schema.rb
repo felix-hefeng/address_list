@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140927135927) do
   end
 
   create_table "users", force: true do |t|
+    t.integer  "department_id"
     t.string   "name"
     t.integer  "sex"
     t.date     "birthday"
@@ -28,7 +29,6 @@ ActiveRecord::Schema.define(version: 20140927135927) do
     t.string   "mobile"
     t.string   "address"
     t.string   "position"
-    t.string   "department"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

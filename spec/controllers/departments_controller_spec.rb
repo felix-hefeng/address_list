@@ -23,7 +23,7 @@ describe DepartmentsController do
   # This should return the minimal set of attributes required to create a valid
   # Department. As you add validations to Department, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "name" => "H&R" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -106,8 +106,8 @@ describe DepartmentsController do
         # specifies that the Department created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Department.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => department.to_param, :department => { "name" => "MyString" }}, valid_session
+        Department.any_instance.should_receive(:update).with({ "name" => "TEST" })
+        put :update, {:id => department.to_param, :department => { "name" => "TEST" }}, valid_session
       end
 
       it "assigns the requested department as @department" do
@@ -128,7 +128,7 @@ describe DepartmentsController do
         department = Department.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Department.any_instance.stub(:save).and_return(false)
-        put :update, {:id => department.to_param, :department => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => department.to_param, :department => { "name" => nil }}, valid_session
         assigns(:department).should eq(department)
       end
 
@@ -136,7 +136,7 @@ describe DepartmentsController do
         department = Department.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Department.any_instance.stub(:save).and_return(false)
-        put :update, {:id => department.to_param, :department => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => department.to_param, :department => { "name" => nil }}, valid_session
         response.should render_template("edit")
       end
     end

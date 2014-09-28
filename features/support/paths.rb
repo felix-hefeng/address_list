@@ -5,6 +5,8 @@ def path_to(page_name)
     root_path
   when /the list of users/
     users_path
+  when /the list of departments/
+  	departments_path
   
   # Add more page name => path mappings here
   
